@@ -1,0 +1,54 @@
+{% extends 'Base.html' %}
+{% block title %}
+Summary Page
+{% endblock %} 
+
+
+
+
+   
+    
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <br/><br/>
+    <h2>Summary Page - for Developers debugging and notes  </h2>
+    <br/><br/>
+    <p>Summarise complaint and build email. send email to me then build tweet. after this hook into twitter and finally create a dashboard that shows the performance of current complaint</p>
+    <p>Look at created a chat page with agent and complaint, datacamp - https://www.datacamp.com/community/tutorials/building-a-chatbot-using-chatterbot
+    youtube video https://www.youtube.com/watch?v=xof1OgxcRhY, basic version from nltk here https://www.analyticsvidhya.com/blog/2021/07/build-a-simple-chatbot-using-python-and-nltk/
+     </p> 
+    <p>Create a tweet and tweet it. </p>
+    <p> useful video tagging a variable into html on re-directo https://www.youtube.com/watch?v=CVEKe39VFu8&t=1264s see around 15 mins on </p>
+    <p> Create a database of worst performing companies, why they 
+    don't answer complaints.</p>
+    <hr><h3> Tidy up </h3>
+      Complaints model has hard coded values that will need to come from machine learning. Need to be able to compair the assessment of a complaint with its rights and 
+      then accept or reject that complaint. Need to get the complaints and Users uncoupled as in the same app. 
+      <p>Posting of complaints particularly slow as it is processing models when doing it, things to look: 3 overlapping models, may be pullingin the same packages,
+      can I store data after the post is happening</p>
+      <p> Need to create a contact work flow from initial contact to resolution and change the type of communication as it develops </p>
+    <hr>
+                You have {{num_members}} Users in your database
+    <hr>
+                There are {{num_agents}} agents in your database
+    <hr>
+                You have {{num_complaints}} complaints in your database
+    <hr>
+       
+        
+     
+
+
+  </div>
+</div>
+</div>
+  
+ 
+ 
+{% endblock %}
+
+
+
+    

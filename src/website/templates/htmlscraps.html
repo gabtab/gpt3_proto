@@ -1,0 +1,15 @@
+   <h3> AGENTS</h3>
+    
+    {%for agent in Agents %}
+        <div class="card" style="width: 30rem;">
+         <div class="card-body">
+            <h5 class="card-title">{{agent.user_name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{agent.user_email}}</h6>
+            <p class="card-text">Created on {{agent.amend_date}} at {{agent.amend_time}}</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+    {% endfor %}
+    
+

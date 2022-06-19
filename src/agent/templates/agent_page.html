@@ -1,0 +1,25 @@
+{% extends "Base.html" %}
+{% block title %} Create an Agent {% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}  
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <br/><br/>
+    <h2> Create an Agent </h2>
+    <br/><br/>
+     <form method = "POST" >
+        <table >
+            {% csrf_token %} 
+            {{form|crispy}}
+        </table>
+        <br/><br/>
+        <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        
+          </div>
+</div>
+</div>
+        {% endblock %}

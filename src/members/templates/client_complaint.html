@@ -1,0 +1,28 @@
+{% extends "Base.html" %}
+{% block title %} Complaint Registration {% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+  
+
+
+<div class="container-md">
+
+  <div class="row">
+    <div class="col">
+    <h2> Register a Complaint </h2>
+      <form method = "POST">
+        <table>
+        {% csrf_token %} 
+       {{form|crispy}}
+        </table>
+        <p></p>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    
+    
+</div>
+</div>
+
+{% endblock %}
+
+
