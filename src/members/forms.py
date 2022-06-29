@@ -10,7 +10,7 @@ from email.mime.multipart import MIMEMultipart
 
 
 myapi_keys = {}
-with open("/home/gabtab/openai.txt") as myfile:
+with open("/etc/django/openai.txt") as myfile:
     for line in myfile:
         name, var = line.partition("=")[::2]
         myapi_keys[name.strip()] = var.strip()
