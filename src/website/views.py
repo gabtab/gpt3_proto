@@ -37,5 +37,15 @@ def home(request):
                    
                    })
 
+def index(request):
+    """
+    this is a test view that is created to show how you can use variables in this
+    and push them into the template. see template, welcome.html and url sheet in 
+    webagent app
+    """
+    return render(request, "index.html",
+                  {"current_time": datetime.now(),
+                   
+                   })
 
 

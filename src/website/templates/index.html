@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A test site for showing potential of GPT3.">
+    <meta name="author" content="Devcrud">
+    <title>GPT3 Promo | landing page</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/themify-icons/css/themify-icons.css' %}">
+    <!-- Bootstrap + Rubic main styles -->
+	<link rel="stylesheet" href="{% static 'assets/css/rubic.css' %}">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <nav id="scrollspy" class="navbar page-navbar navbar-dark navbar-expand-md fixed-top" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="navbar-brand" href="#"><strong class="text-primary">GPT</strong><span class="text-light">3</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="#">Welcome, {{user.username}}</a>
+                    </li>
+
+                    {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-dark shadow-none ml-md-4" href="{% url 'login_user' %}">Login</a>
+                    </li>
+
+                    {% endif %}
+                    </ul>
+                    </div>
+                    </div>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="header d-flex justify-content-center">
+        <div class="container">
+            <div class="row h-100 align-items-center">
+                <div class="col-md-7">
+                    <div class="header-content">
+                        <h3 class="header-title"><strong class="text-primary">GPT</strong><span>3</span></h3>
+                        <h4 class="header-subtitle">Open source Artificial Intelligence </h4>
+                        <p>GPT3 is an open source transformer trained on content from the internet. Login to ask it anything</p>
+                    </div>  
+                </div>
+                <div class="col-md-5 d-none d-md-block">
+                    <form class="header-form">
+                        <div class="head">Try your <span class="text-primary">Free</span> trial today.</div>
+                        <div class="body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name*">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email*">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password*">
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-primary btn-block">Get Started</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>  
+        </div>
+    </header>
+ 
+
+
+    <section class="section" id="about">
+        <div class="container text-center">
+            <h6 class="display-4 has-line">WHY THIS IS AWESOME</h6>
+            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="circle-100 mb-3"><i class="ti-light-bulb"></i></div>
+                    <h6 class="title mb-3">Thoughtful Design</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas eveniet laborum, vero doloremque sunt tempora.</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="circle-100 mb-3"><i class="ti-paint-bucket"></i></div>
+                    <h6 class="title mb-3">WELL CRAFTED</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas eveniet laborum, vero doloremque sunt tempora.</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="circle-100 mb-3"><i class="ti-marker-alt"></i></div>
+                    <h6 class="title mb-3">EASY TO CUSTOMIZE</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas eveniet laborum, vero doloremque sunt tempora.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+ 
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <h6 class="display-4 has-line">CONTACT US</h6>
+            <p class="mb-5 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <form>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group pb-1">
+                            <input type="text" class="form-control" required placeholder="Name">            
+                        </div>
+                        <div class="form-group pb-1">
+                            <input type="email" class="form-control" required placeholder="Email">          
+                        </div>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <textarea name="" id="" cols="" rows="7" class="form-control" required placeholder="Message"></textarea>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Send Message">
+            </form>
+        </div>
+    </section>
+    <footer class="footer py-4 bg-dark text-light"> 
+        <div class="container text-center">
+            <p class="mb-4 small">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.grypar.com">GRYPAR.COM</a></p>
+            <div class="social-links">
+                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
+            </div>
+        </div>
+    </footer>
+	
+	<!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+    <!-- bootstrap 3 affix -->
+	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Rubic js -->
+    <script src="assets/js/rubic.js"></script>
+
+</body>
+</html>
