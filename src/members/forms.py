@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import complaint
+from .models import question
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from analytics_hub.AI_models.summarise_complaint import gpt3_summary
@@ -32,9 +32,9 @@ class NewUserForm(UserCreationForm):
         return user
 
         
-class client_complaint(ModelForm):
+class client_question(ModelForm):
     class Meta:
-            model = complaint
+            model = question
             widgets = {'details':forms.Textarea({'rows': '5','minlength':250}),
                         'outcome':forms.Textarea({'rows': '2'})
                    }

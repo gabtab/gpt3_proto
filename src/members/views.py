@@ -1,5 +1,5 @@
-from .forms import NewUserForm, client_complaint
-from .models import complaint
+from .forms import NewUserForm, client_question
+from .models import question
 from django.shortcuts import render, redirect
 from django.contrib.auth import login,logout , authenticate
 from django.contrib.auth.decorators import login_required
@@ -23,26 +23,26 @@ def register_request(request):
 
 
 @login_required(login_url="login_user")
-def complaint_input(request):
+def question_input(request):
     """
-    The complaint webpage view. this uses
-    a form for completing the complaint data(must be logged in)
+    The question webpage view. this uses
+    a form for completing the question data(must be logged in)
     """
     #submitted = False
     if request.method == "POST":
-        form = client_complaint(request.POST)
+        form = client_question(request.POST)
         if form.is_valid():
             form.save()
             
             
             """ next few lines were used to get the sentiment and topics into webpage
-            complaint_topic = complaint.objects.filter(title = form['title'].value(), \
+            question_topic = question.objects.filter(title = form['title'].value(), \
                                                       user_name = request.user).values('topic_data','sentiment')
              
-            test1 = complaint_topic[0]['topic_data']
-            test2 = complaint_topic[0]['sentiment']
-            complaint_topic =  str(test1).strip('[]')
-            topic_message = "The key issues identified from you complaint are " + str(complaint_topic) + " \r\n" + \
+            test1 = question_topic[0]['topic_data']
+            test2 = question_topic[0]['sentiment']
+            question_topic =  str(test1).strip('[]')
+            topic_message = "The key issues identified from you question are " + str(question_topic) + " \r\n" + \
             "The sentiment is " + str(test2)
              probably no need for the above few lines once upskilles   """ 
         
@@ -50,9 +50,9 @@ def complaint_input(request):
             
             
     else:
-        form = client_complaint(initial={'user_name': request.user})
+        form = client_question(initial={'user_name': request.user})
         topic_message = ''
-    return render(request, "client_complaint.html", {"form":form, "topic_message": topic_message})
+    return render(request, "client_question.html", {"form":form, "topic_message": topic_message})
 
 
 
@@ -81,7 +81,7 @@ def login_user(request):
     
     
     else:
-        return render(request, 'authenticate/login.html', {})
+        return render(request, 'login.html', {})
 
 def logout_request(request):
 	logout(request)

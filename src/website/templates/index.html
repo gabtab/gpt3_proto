@@ -2,6 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% if messages %}
+          {% for message in messages %}
+              <div class="navbar page-navbar navbar-dark navbar-expand-md fixed-top"> <strong class="text-primary"> <role="alert">
+                <strong>{{message}} </strong>
+                </div>
+          {% endfor %}
+      {% endif %}
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A test site for showing potential of GPT3.">
@@ -11,7 +18,9 @@
     <link rel="stylesheet" href="{% static 'assets/vendors/themify-icons/css/themify-icons.css' %}">
     <!-- Bootstrap + Rubic main styles -->
 	<link rel="stylesheet" href="{% static 'assets/css/rubic.css' %}">
+
 </head>
+
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
     <nav id="scrollspy" class="navbar page-navbar navbar-dark navbar-expand-md fixed-top" data-spy="affix" data-offset-top="20">
