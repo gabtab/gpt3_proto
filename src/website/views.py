@@ -14,13 +14,10 @@ def welcome(request):
     """
     return render(request, "welcome.html",
                   {"current_time": datetime.now(),
-                   "Posts": Post.objects.all(),
-                   "num_posts": Post.objects.count(),
                    "Agents": agent.objects.all(),
                    "num_agents": agent.objects.count(),
                    #"num_clients": client.objects.count(),
                    #"clients": client.objects.all(),
-                   "num_complaints": complaint.objects.count(),
                    "num_members": User.objects.count(),
                    })
 

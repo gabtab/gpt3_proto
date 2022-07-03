@@ -28,7 +28,7 @@ def question_input(request):
     The question webpage view. this uses
     a form for completing the question data(must be logged in)
     """
-    #submitted = False
+ #   submitted = False
     if request.method == "POST":
         form = client_question(request.POST)
         if form.is_valid():

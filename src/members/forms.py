@@ -51,10 +51,10 @@ class client_question(ModelForm):
         """
         
 
-        inputted_complaint = super(client_complaint, self).save(commit=False)
-        inputted_complaint.summary_trans = gpt3_summary(self.cleaned_data['details'],myapi_keys)
+        inputted_question = super(client_question, self).save(commit=False)
+        inputted_question.summary_trans = gpt3_summary(self.cleaned_data['details'],myapi_keys)
         #inputted_complaint.user_name = User.username
-        inputted_complaint.save()
+        inputted_question.save()
         #self.send_mail(inputted_complaint.summary_trans)
-        return inputted_complaint
+        return inputted_question
 
