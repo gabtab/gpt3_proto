@@ -1,25 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
-from agent.models import agent
 from django.contrib.auth.models import User
-from members.models import complaint
+from members.models import question
 
-# Create your views here.
-def welcome(request):
-    """
-    this is a test view that is created to show how you can use variables in this
-    and push them into the template. see template, welcome.html and url sheet in 
-    webagent app
-    """
-    return render(request, "welcome.html",
-                  {"current_time": datetime.now(),
-                   "Agents": agent.objects.all(),
-                   "num_agents": agent.objects.count(),
-                   #"num_clients": client.objects.count(),
-                   #"clients": client.objects.all(),
-                   "num_members": User.objects.count(),
-                   })
 
 
 def home(request):

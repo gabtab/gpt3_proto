@@ -15,17 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from website.views import welcome, home, index
-from agent.views import agent_input 
+from website.views import index
 from members.views import register_request,question_input, logout_request
 
 
 urlpatterns = [
    re_path(r'^$',index, name='index-tab'),
-  #  re_path(r'^$',home, name='home-tab'),
     re_path(r'^admin/', admin.site.urls),
-    re_path(r'^summary/$', welcome, name='summary_tab'),
-    re_path(r'^agent_input',agent_input, name='agent_input_tab' ),
     path('members/', include('members.urls')) ,
     path('members/', include('django.contrib.auth.urls'))  ,  
     path("logout", logout_request, name= "logout"),

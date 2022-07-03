@@ -35,11 +35,11 @@ class NewUserForm(UserCreationForm):
 class client_question(ModelForm):
     class Meta:
             model = question
-            widgets = {'details':forms.Textarea({'rows': '5','minlength':250}),
-                        'outcome':forms.Textarea({'rows': '2'})
+            widgets = {'details':forms.Textarea({'rows': '8'}),
+                        'outcome':forms.Textarea({'rows': '8'})
                    }
             
-            exclude = ['amend_date','amend_time','topic_data','sentiment','summary_trans']
+            exclude = ['amend_date','amend_time','user_name','outcome', 'summary_trans']
         
 
     def save(self):
@@ -50,10 +50,10 @@ class client_question(ModelForm):
         re-directed back to home
         """
         
-
+        
         inputted_question = super(client_question, self).save(commit=False)
         inputted_question.summary_trans = gpt3_summary(self.cleaned_data['details'],myapi_keys)
-        #inputted_complaint.user_name = User.username
+        inputted_question.user_name = self.cleaned_data.get('username')
         inputted_question.save()
         #self.send_mail(inputted_complaint.summary_trans)
         return inputted_question

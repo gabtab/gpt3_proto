@@ -50,9 +50,9 @@ def question_input(request):
             
             
     else:
+        print(request.user)
         form = client_question(initial={'user_name': request.user})
-        topic_message = ''
-    return render(request, "client_question.html", {"form":form, "topic_message": topic_message})
+    return render(request, "client_question.html", {"form":form})
 
 
 
