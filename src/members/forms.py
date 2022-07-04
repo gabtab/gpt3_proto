@@ -35,11 +35,10 @@ class NewUserForm(UserCreationForm):
 class client_question(ModelForm):
     class Meta:
             model = question
-            widgets = {'details':forms.Textarea({'rows': '8'}),
-                        'outcome':forms.Textarea({'rows': '8'})
+            widgets = {'details':forms.Textarea({'rows': '8'})
                    }
             
-            exclude = ['amend_date','amend_time','user_name','outcome', 'summary_trans']
+            fields = ['details','user']
         
 
     def save(self):
@@ -49,12 +48,20 @@ class client_question(ModelForm):
         can use whats in the form to populate the db while the user has been 
         re-directed back to home
         """
+        gpt3_output = gpt3_summary(self.cleaned_data['details'],myapi_keys)
         
         
         inputted_question = super(client_question, self).save(commit=False)
-        inputted_question.summary_trans = gpt3_summary(self.cleaned_data['details'],myapi_keys)
         inputted_question.user_name = self.cleaned_data.get('username')
-        inputted_question.save()
+        inputted_question.model_output_text = gpt3_output.choices[0]['text']
+        inputted_question.model_finish_reason = gpt3_output.choices[0]['finish_reason']
+        inputted_question.model_log_probs = gpt3_output.choices[0]['logprobs']
+        inputted_question.model_index = gpt3_output.choices[0]['index']
+        inputted_question.model_created = gpt3_output.created
+        inputted_question.model_id = gpt3_output.id
+        inputted_question.model_name = gpt3_output.model
+        inputted_question.model_object = gpt3_output.object
+        inputted_question.save() 
         #self.send_mail(inputted_complaint.summary_trans)
         return inputted_question
 
