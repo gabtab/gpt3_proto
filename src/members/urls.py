@@ -9,4 +9,5 @@ urlpatterns = [
    re_path(r'^client_input',views.register_request, name='client_input_tab' ),
    #re_path(r'^complaint_input',views.complaint_input, name='complaint_input_tab' ),
    re_path(r'^question_input',views.question_input, name='question_input_tab' ),
+   re_path(r'^answer',views.answer, name='answer_tab' ),
 ]

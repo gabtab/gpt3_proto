@@ -1,0 +1,27 @@
+{% extends "Base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+  
+
+
+<div class="container-md">
+
+  <div class="row">
+    <div class="col">
+    <h2> GPT3 Says: </h2>
+      <form method = "GET">
+        <table>
+        {% csrf_token %} 
+       {{form|crispy}}
+        </table>
+        <p></p>
+
+    </form>
+    
+    
+</div>
+</div>
+
+{% endblock %}
+
+

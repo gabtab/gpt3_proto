@@ -1,4 +1,4 @@
-from .forms import NewUserForm, client_question
+from .forms import NewUserForm, client_question, answer
 from .models import question
 from django.shortcuts import render, redirect
 from django.contrib.auth import login,logout , authenticate
@@ -33,20 +33,8 @@ def question_input(request):
         form = client_question(request.POST)
         if form.is_valid():
             form.save()
-            
-            
-            """ next few lines were used to get the sentiment and topics into webpage
-            question_topic = question.objects.filter(title = form['title'].value(), \
-                                                      user_name = request.user).values('topic_data','sentiment')
-             
-            test1 = question_topic[0]['topic_data']
-            test2 = question_topic[0]['sentiment']
-            question_topic =  str(test1).strip('[]')
-            topic_message = "The key issues identified from you question are " + str(question_topic) + " \r\n" + \
-            "The sentiment is " + str(test2)
-             probably no need for the above few lines once upskilles   """ 
-        
-            return redirect("/")
+            form = answer(initial={'user_name': request.user})
+            return render(request, "answer.html", {"form":form})
             
             
     else:
@@ -87,3 +75,17 @@ def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("/")
+
+
+
+
+"""
+
+@login_required(login_url="login_user")
+def answer(request):
+
+ #   submitted = False
+    if request.method == "GET":
+        form = answer(initial={'user_name': request.user})
+    return render(request, "answer.html")
+"""

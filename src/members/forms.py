@@ -65,3 +65,11 @@ class client_question(ModelForm):
         #self.send_mail(inputted_complaint.summary_trans)
         return inputted_question
 
+class answer(ModelForm):
+    class Meta:
+            model = question
+            widgets = {'model_output_text':forms.Textarea({'rows': '8'})
+                   }
+            
+            fields = ['model_output_text']
+        
