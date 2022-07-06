@@ -31,14 +31,16 @@ def question_input(request):
  #   submitted = False
     if request.method == "POST":
         form = client_question(request.POST)
+        answer_output = form.instance.model_output_text
         if form.is_valid():
             form.save()
+            answer_output = form.instance.model_output_text
             form = answer(initial={'user_name': request.user})
-            return render(request, "answer.html", {"form":form})
+            form.instance.model_output_text = answer_output
+            return render(request, "answer.html", {"form":form, 'answer':answer_output})
             
             
     else:
-        print(request.user)
         form = client_question(initial={'user_name': request.user})
     return render(request, "client_question.html", {"form":form})
 

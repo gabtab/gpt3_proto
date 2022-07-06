@@ -9,19 +9,14 @@
   <div class="row">
     <div class="col">
     <h2> GPT3 Says: </h2>
-      <form method = "GET">
-        <table>
-        {% csrf_token %} 
-       {{form|crispy}}
-        </table>
-        <p></p>
-
-    </form>
-    
-    
+        <h3>{{answer}}</h3>
+        <div class="row">
+          <div class="col">
+              <a class="av-link btn btn-primary text-dark shadow-none ml-md-4" href="{% url 'question_input_tab' %}"> ASK MORE QUESTIONS HERE</a> 
+          </div>
+      </div
+  </div>
 </div>
-</div>
-
 {% endblock %}
 
 
