@@ -21,7 +21,7 @@ def gpt3_summary(complaints, myapi_keys):
     #start_sequence = "I am acting as an agent for our client who has the following complaint for you: "
     response = openai.Completion.create(
     engine="davinci",
-    prompt="Please answer the following question:\n\"\"\"\n " +  complaints + "\n\"\"\"\nI want the answer to be funny and in the accent of Arnold Schwarzenegger:\n\"\"\"\n",
+    prompt="Please answer the following question:\n\"\"\"\n " +  complaints + "\n\"\"\"\nbe serious and like chopper read:\n\"\"\"\n",
     
     temperature=0.9,
     max_tokens=100,
