@@ -19,7 +19,7 @@ RUN . /var/www/grypar.com/my_env/bin/activate
 RUN which python3
 
 
-#ADD ./grypar.com.conf /etc/apache2/sites-available/grypar.com.conf
+ADD ./grypar.com.conf /etc/apache2/sites-available/grypar.com.conf
 RUN a2dissite 000-default.conf
 RUN a2ensite grypar.com
 RUN a2enmod rewrite
