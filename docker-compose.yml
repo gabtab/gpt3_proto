@@ -12,3 +12,4 @@ services:
       volumes:
         - /etc/apache2/certificate/:/etc/apache2/certificate/
         - /etc/django/:/etc/django/
+        - /etc/apache2/sites-available/:/etc/apache2/sites-available/
