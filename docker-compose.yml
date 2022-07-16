@@ -3,10 +3,12 @@ version: "2"
 services:
     django-apache2:
       build: .
-      container_name: django-apache2
+      container_name: gpt3_or
       ports:
-        - '8005:80'
+        - '80:80'
         - '3500:3500'
-        - '8006:443'
+        - '443:443'
+
       volumes:
-        - $PWD:/var/www/grypar.com
+        - /etc/apache2/certificate/:/etc/apache2/certificate/
+        - /etc/django/:/etc/django/

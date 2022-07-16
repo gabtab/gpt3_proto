@@ -21,14 +21,14 @@ def gpt3_summary(complaints, myapi_keys):
     #start_sequence = "I am acting as an agent for our client who has the following complaint for you: "
     response = openai.Completion.create(
     engine="davinci",
-    prompt="Please answer the following question:\n\"\"\"\n " +  complaints + "\n\"\"\"\nbe serious and like chopper read:\n\"\"\"\n",
+    prompt="\n\n Please answer the following question be polite yet extremely cheeky and try to joke. Question: " +  complaints ,
     
-    temperature=0.9,
+    temperature=0.2,
     max_tokens=100,
-    top_p=1,
+    top_p=0,
     frequency_penalty=1.5,
-    presence_penalty=1.5,
-    stop=["\"\"\""]
+    presence_penalty=0.5,
+    stop=["\n"]
     )
     return response
 
