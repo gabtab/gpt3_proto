@@ -38,7 +38,7 @@ class client_question(ModelForm):
             widgets = {'details':forms.Textarea({'rows': '8'})
                    }
             
-            fields = ['details','user']
+            fields = ['details']
         
 
     def save(self):
@@ -50,9 +50,8 @@ class client_question(ModelForm):
         """
         gpt3_output = gpt3_summary(self.cleaned_data['details'],myapi_keys)
         
-        
         inputted_question = super(client_question, self).save(commit=False)
-        inputted_question.user_name = self.cleaned_data.get('username')
+        inputted_question.user_id = self.initial['user_id']
         inputted_question.model_output_text = gpt3_output.choices[0]['text']
         inputted_question.model_finish_reason = gpt3_output.choices[0]['finish_reason']
         inputted_question.model_log_probs = gpt3_output.choices[0]['logprobs']
