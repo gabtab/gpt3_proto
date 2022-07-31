@@ -11,7 +11,7 @@ RUN apt-get -y install mysql-server
 RUN apt-get -y install libmysqlclient-dev
 
 COPY requirements.txt /var/www/grypar.com/requirements.txt
-RUN pip install -r /var/www/grypar.com/requirements.txt
+RUN pip3 install -r /var/www/grypar.com/requirements.txt
 
 ADD . /var/www/grypar.com
 RUN which python3
