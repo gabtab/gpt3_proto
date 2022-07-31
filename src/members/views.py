@@ -30,7 +30,7 @@ def question_input(request):
     """
  #   submitted = False
     if request.method == "POST":
-        form = client_question(request.POST)
+        form = client_question(request.POST,initial={'user_id': request.user.id})
         answer_output = form.instance.model_output_text
         if form.is_valid():
             form.save()
@@ -41,7 +41,7 @@ def question_input(request):
             
             
     else:
-        form = client_question(initial={'user_name': request.user})
+        form = client_question()
     return render(request, "client_question.html", {"form":form})
 
 
